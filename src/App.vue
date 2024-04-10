@@ -5,12 +5,18 @@
     :dir="languageDirection"
     :language="language"
   >
+
+    
     <WindowsTitleBar
       v-if="platform === 'Windows'"
       :db-path="dbPath"
       :company-name="companyName"
     />
     <!-- Main Contents -->
+    <Login
+      v-if="activeScreen === 'Login'"
+      @on-login="doLogin"
+    />
     <Desk
       v-if="activeScreen === 'Desk'"
       class="flex-1"
@@ -47,6 +53,7 @@ import { fyo } from './initFyo';
 import DatabaseSelector from './pages/DatabaseSelector.vue';
 import Desk from './pages/Desk.vue';
 import SetupWizard from './pages/SetupWizard/SetupWizard.vue';
+import Login from './pages/Login.vue';
 import setupInstance from './setup/setupInstance';
 import { SetupWizardOptions } from './setup/types';
 import './styles/index.css';
@@ -61,8 +68,10 @@ import { Search } from './utils/search';
 import { Shortcuts } from './utils/shortcuts';
 import { routeTo } from './utils/ui';
 import { useKeys } from './utils/vueUtils';
+import { Buffer } from 'buffer';
 
 enum Screen {
+  Login = 'Login',
   Desk = 'Desk',
   DatabaseSelector = 'DatabaseSelector',
   SetupWizard = 'SetupWizard',
@@ -71,6 +80,7 @@ enum Screen {
 export default defineComponent({
   name: 'App',
   components: {
+    Login,
     Desk,
     SetupWizard,
     DatabaseSelector,
@@ -124,9 +134,11 @@ export default defineComponent({
   },
   async mounted() {
     await this.setInitialScreen();
+    window.Buffer = Buffer;
   },
   methods: {
     async setInitialScreen(): Promise<void> {
+
       const lastSelectedFilePath = fyo.config.get('lastSelectedFilePath', null);
 
       if (
@@ -134,9 +146,9 @@ export default defineComponent({
         !lastSelectedFilePath.length
       ) {
         this.activeScreen = Screen.DatabaseSelector;
+
         return;
       }
-
       await this.fileSelected(lastSelectedFilePath);
     },
     async setSearcher(): Promise<void> {
@@ -145,7 +157,11 @@ export default defineComponent({
     },
     async setDesk(filePath: string): Promise<void> {
       await setLanguageMap();
-      this.activeScreen = Screen.Desk;
+      if(localStorage.token) {
+        this.activeScreen = Screen.Desk;
+      } else {
+        this.activeScreen = Screen.Login;
+      }
       await this.setDeskRoute();
       await fyo.telemetry.start(true);
       await ipc.checkForUpdates();
@@ -179,6 +195,11 @@ export default defineComponent({
       } catch (error) {
         await handleErrorWithDialog(error, undefined, true, true);
         await this.showDbSelector();
+      }
+    },
+    async doLogin(data:any) {
+      if (data.success) {
+        this.setInitialScreen();
       }
     },
     async setupComplete(setupWizardOptions: SetupWizardOptions): Promise<void> {
