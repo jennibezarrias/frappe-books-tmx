@@ -164,6 +164,27 @@ function getCompleteSidebar(): SidebarConfig {
       icon: 'dashboard',
     },
     {
+      label: 'Whatsapp',
+      name: 'whatsapp',
+      route: '/wpp',
+      icon: 'whatsapp'
+    },
+    getPOSSidebar(),
+    {
+      label: 'Tarefas',
+      name: 'tasks',
+      icon: 'tasks',
+      route: '/todo-list',
+      items: [
+        {
+          label: 'To-do Calendar',
+          name: 'todo-calendar',
+          route: '/todo-list',
+          schemaName: 'ToDo'
+        }
+      ]
+    },
+    {
       label: t`Sales`,
       name: 'sales',
       icon: 'sales',
@@ -276,7 +297,6 @@ function getCompleteSidebar(): SidebarConfig {
     },
     getReportSidebar(),
     getInventorySidebar(),
-    getPOSSidebar(),
     getRegionalSidebar(),
     {
       label: t`Setup`,

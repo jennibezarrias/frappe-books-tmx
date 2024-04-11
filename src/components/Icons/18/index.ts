@@ -23,6 +23,8 @@ import Settings from './settings.vue';
 import Start from './start.vue';
 import Supplier from './supplier.vue';
 import System from './system.vue';
+import Tasks from './tasks.vue'
+import Whatsapp from './whatsapp.vue';
 
 // prettier-ignore
 export default {
@@ -51,4 +53,6 @@ export default {
   'start': Start,
   'supplier': Supplier,
   'system': System,
+  'tasks': Tasks,
+  'whatsapp': Whatsapp,
 }

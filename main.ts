@@ -8,6 +8,7 @@ import { emitMainProcessError } from 'backend/helpers';
 import {
   app,
   BrowserWindow,
+  BrowserView,
   BrowserWindowConstructorOptions,
   protocol,
   ProtocolRequest,
@@ -95,6 +96,7 @@ export class Main {
         contextIsolation: true,
         nodeIntegration: false,
         sandbox: false,
+        webviewTag: true,
         preload,
       },
       autoHideMenuBar: true,
@@ -124,8 +126,16 @@ export class Main {
 
   async createWindow() {
     const options = this.getOptions();
-    this.mainWindow = new BrowserWindow(options);
 
+   
+    this.mainWindow = new BrowserWindow(options);
+    /*
+    const view = new BrowserView();
+    this.mainWindow.addBrowserView(view);
+    view.setBounds({ x: 0, y: 0, width: 800, height: 600 });
+    view.webContents.loadURL('https://web.whatsapp.com/');
+    */
+   
     if (this.isDevelopment) {
       this.setViteServerURL();
     } else {
@@ -138,6 +148,10 @@ export class Main {
     }
 
     this.setMainWindowListeners();
+  }
+
+  openBrowserView(url:string) {
+    this.mainWindow.webContents
   }
 
   setViteServerURL() {
@@ -165,6 +179,9 @@ export class Main {
       return;
     }
 
+    this.mainWindow.on('new-view', () => {
+      console.log('CRIOU NOVA VIEW!!!')
+    })
     this.mainWindow.on('closed', () => {
       this.mainWindow = null;
     });

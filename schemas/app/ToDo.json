@@ -1,0 +1,49 @@
+{
+    "name": "ToDo",
+    "label": "Todo Task",
+    "naming": "manual",
+    "fields": [
+      {
+        "fieldname": "name",
+        "label": "Name",
+        "fieldtype": "Data",
+        "required": true,
+        "placeholder": "Full Name",
+        "section": "Default"
+      },
+      {
+        "fieldname": "description",
+        "label": "Description",
+        "fieldtype": "Long text",
+        "required": false,
+        "section": "Default"
+      },
+      
+      {
+        "fieldname": "address",
+        "label": "Address",
+        "fieldtype": "Link",
+        "target": "Address",
+        "create": true,
+        "section": "Contacts"
+      },
+      {
+        "fieldname": "defaultAccount",
+        "label": "Default Account",
+        "fieldtype": "Link",
+        "target": "Account",
+        "create": true,
+        "section": "Billing"
+      },
+      {
+        "fieldname": "currency",
+        "label": "Currency",
+        "fieldtype": "Link",
+        "target": "Currency",
+        "placeholder": "INR",
+        "create": true,
+        "section": "Billing"
+      }
+    ]
+  }
+  

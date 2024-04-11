@@ -11,7 +11,9 @@ import Report from 'src/pages/Report.vue';
 import Settings from 'src/pages/Settings/Settings.vue';
 import TemplateBuilder from 'src/pages/TemplateBuilder/TemplateBuilder.vue';
 import CustomizeForm from 'src/pages/CustomizeForm/CustomizeForm.vue';
+import WhatsApp from 'src/pages/Whatsapp.vue'
 import POS from 'src/pages/POS/POS.vue';
+import ToDo from 'src/pages/ToDo.vue';
 import type { HistoryState } from 'vue-router';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { historyState } from './utils/refs';
@@ -24,6 +26,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/get-started',
     component: GetStarted,
+  },
+  {
+    path: '/todo-list',
+    component: ToDo
   },
   {
     path: `/edit/:schemaName/:name`,
@@ -101,6 +107,11 @@ const routes: RouteRecordRaw[] = [
     path: '/import-wizard',
     name: 'Import Wizard',
     component: ImportWizard,
+  },
+  {
+    path: '/wpp',
+    name: 'WhatsApp',
+    component: WhatsApp
   },
   {
     path: '/template-builder/:name',
