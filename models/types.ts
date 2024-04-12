@@ -34,6 +34,7 @@ export enum ModelNameEnum {
   Tax = 'Tax',
   TaxDetail = 'TaxDetail',
   TaxSummary = 'TaxSummary',
+  ToDo = 'ToDo',
   PatchRun = 'PatchRun',
   SingleValue = 'SingleValue',
   InventorySettings = 'InventorySettings',

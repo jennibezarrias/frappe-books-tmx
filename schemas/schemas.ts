@@ -31,6 +31,7 @@ import SetupWizard from './app/SetupWizard.json';
 import Tax from './app/Tax.json';
 import TaxDetail from './app/TaxDetail.json';
 import TaxSummary from './app/TaxSummary.json';
+import ToDo from './app/ToDo.json';
 import UOM from './app/UOM.json';
 import InventorySettings from './app/inventory/InventorySettings.json';
 import Location from './app/inventory/Location.json';
@@ -123,6 +124,7 @@ export const appSchemas: Schema[] | SchemaStub[] = [
   Tax as Schema,
   TaxDetail as Schema,
   TaxSummary as Schema,
+  ToDo as Schema,
 
   InventorySettings as Schema,
   Location as Schema,

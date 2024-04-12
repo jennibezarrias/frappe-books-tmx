@@ -175,14 +175,6 @@ function getCompleteSidebar(): SidebarConfig {
       name: 'tasks',
       icon: 'tasks',
       route: '/todo-list',
-      items: [
-        {
-          label: 'To-do Calendar',
-          name: 'todo-calendar',
-          route: '/todo-list',
-          schemaName: 'ToDo'
-        }
-      ]
     },
     {
       label: t`Sales`,

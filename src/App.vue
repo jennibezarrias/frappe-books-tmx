@@ -56,6 +56,7 @@ import SetupWizard from './pages/SetupWizard/SetupWizard.vue';
 import Login from './pages/Login.vue';
 import setupInstance from './setup/setupInstance';
 import { SetupWizardOptions } from './setup/types';
+import 'v-calendar/style.css';
 import './styles/index.css';
 import { connectToDatabase, dbErrorActionSymbols } from './utils/db';
 import { initializeInstance } from './utils/initialization';

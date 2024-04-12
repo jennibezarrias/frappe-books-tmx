@@ -14,35 +14,15 @@
       {
         "fieldname": "description",
         "label": "Description",
-        "fieldtype": "Long text",
+        "fieldtype": "Text",
         "required": false,
         "section": "Default"
-      },
-      
+      }, 
       {
-        "fieldname": "address",
-        "label": "Address",
-        "fieldtype": "Link",
-        "target": "Address",
-        "create": true,
-        "section": "Contacts"
-      },
-      {
-        "fieldname": "defaultAccount",
-        "label": "Default Account",
-        "fieldtype": "Link",
-        "target": "Account",
-        "create": true,
-        "section": "Billing"
-      },
-      {
-        "fieldname": "currency",
-        "label": "Currency",
-        "fieldtype": "Link",
-        "target": "Currency",
-        "placeholder": "INR",
-        "create": true,
-        "section": "Billing"
+        "fieldname": "date",
+        "label": "Task date to complete",
+        "fieldtype": "Datetime",
+        "required": false
       }
     ]
   }

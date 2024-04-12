@@ -23,6 +23,7 @@ import { SalesQuote } from './baseModels/SalesQuote/SalesQuote';
 import { SalesQuoteItem } from './baseModels/SalesQuoteItem/SalesQuoteItem';
 import { SetupWizard } from './baseModels/SetupWizard/SetupWizard';
 import { Tax } from './baseModels/Tax/Tax';
+import { ToDo } from './baseModels/ToDo/ToDo';
 import { TaxSummary } from './baseModels/TaxSummary/TaxSummary';
 import { Batch } from './inventory/Batch';
 import { InventorySettings } from './inventory/InventorySettings';
@@ -70,6 +71,7 @@ export const models = {
   PrintTemplate,
   Tax,
   TaxSummary,
+  ToDo,
   // Inventory Models
   InventorySettings,
   StockMovement,
